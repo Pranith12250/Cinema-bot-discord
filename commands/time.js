@@ -1,3 +1,5 @@
+const { EmbedBuilder }=require('discord.js');
+
 module.exports={
     name: 'time',
 
@@ -22,7 +24,7 @@ module.exports={
 
         const embed = new EmbedBuilder()
     .setTitle(`TIME RN <:HurryTheFuckUp:735374060065914931>`)
-    .setColor(color)
+    .setColor(0xE50914)
     .addFields(
         { name: 'TOASTY TIME', value: georgiaTime, inline: false},
         { name: 'BODD TIME', value: ukTime || ' ', inline: false},
