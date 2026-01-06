@@ -14,8 +14,6 @@ module.exports={
             );
         }
 
-        console.log('hello');
-
         const movies = await getMovies(
             userSpecificData.sheetId,
             userSpecificData.range_movies,

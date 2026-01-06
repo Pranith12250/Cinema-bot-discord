@@ -16,16 +16,18 @@ module.exports=async function interactionHandler(interaction) {
             const movieName=interaction.options.getString('name').toUpperCase();
 
             try{
+                await interaction.deferReply();
+
                 await command.execute({
                     username: mentionedUser.username,
                     movieName,
-                    reply: (text)=>interaction.reply(text),
-                    ephemeralReply: (text)=>interaction.reply({content:text, ephemeralReply:true}),
+                    reply: (text)=>interaction.editReply(text),
+                    ephemeralReply: (text)=>interaction.reply({content:text, ephemeralReply:false}),
                 });
             }
             catch(err){
                 console.error(err);
-                interaction.reply({
+                interaction.editReply({
                     content: 'YOU MED I FUCKING CRASH. SAY SPRRY NOW BILLLLLAAAADDDDYYYYY',
                     ephemeral: false,
                 });
