@@ -1,5 +1,3 @@
-const { execute } = require("./movie");
-
 module.exports={
     name: 'time',
 
@@ -22,11 +20,18 @@ module.exports={
             timeStyle:'short'
         }).format(new Date());
 
+        const embed = new EmbedBuilder()
+    .setTitle(`TIME RN <:HurryTheFuckUp:735374060065914931>`)
+    .setColor(color)
+    .addFields(
+        { name: 'TOASTY TIME', value: georgiaTime, inline: false},
+        { name: 'BODD TIME', value: ukTime || ' ', inline: false},
+        { name: 'SRK & MEMELORD TIME', value: localTime, inline: false},
+    )
+    .setTimestamp();
+
         reply(
-            `***TIME RN*** <:HurryTheFuckUp:735374060065914931>
-**TOASTY TIME:** ${georgiaTime}
-**BODD TIME:** ${ukTime}
-**SRK & MEMELORD TIME:** ${localTime}`
+            {embeds: [embed]}
         );
     }
 }

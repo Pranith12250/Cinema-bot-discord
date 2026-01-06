@@ -9,10 +9,10 @@ function formatMovie(label, movie, color){
     .setTitle(`${label}`)
     .setColor(color)
     .addFields(
-        { name: 'NAME', value: movie.name || ' ', inline: true},
-        { name: 'LANGUAGE', value: movie.language || ' ', inline: true},
-        { name: 'AUDI', value: movie.auditorium || ' ', inline: true},
-        { name: 'RATING', value: movie.rating || ' ', inline: true},
+        { name: 'NAME', value: movie.name || ' ', inline: false},
+        { name: 'LANGUAGE', value: movie.language || ' ', inline: false},
+        { name: 'AUDI', value: movie.auditorium || ' ', inline: false},
+        { name: 'RATING', value: movie.rating || ' ', inline: false},
         { name: 'REVIEW', value: movie.review || ' '},
         { name: 'AWARDS', value: awardsText || ' '},
     )
