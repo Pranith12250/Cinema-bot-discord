@@ -1,6 +1,6 @@
 const { getMovies } = require('../services/sheetServices');
 const users = require('../config/users');
-const { searchMovie } = require('../utils/movieSearcher');
+const { searchMovieOscars } = require('../utils/movieSearcher');
 const { formatMovie } = require('../utils/movieFormatter');
 
 module.exports={
@@ -33,7 +33,7 @@ module.exports={
         }
 
         const rows_oscars = movies_data.rows_oscars;
-        const movie= await searchMovie(rows_oscars, movieRow, movieName);
+        const movie= await searchMovieOscars(rows_oscars, movieRow, movieName);
 
         const embed = formatMovie(userSpecificData.label, movie, userSpecificData.color);
         reply({embeds: [embed]});

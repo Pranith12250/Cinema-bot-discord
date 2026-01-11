@@ -1,4 +1,4 @@
-async function searchMovie(rows_oscars, movieRow, movieName) {
+async function searchMovieOscars(rows_oscars, movieRow, movieName) {
     const awardHeaders = rows_oscars[2] || [];
     const awardRows = rows_oscars.slice(3);
     let awards=[];
@@ -26,4 +26,4 @@ async function searchMovie(rows_oscars, movieRow, movieName) {
     };
 }
 
-module.exports={ searchMovie };
+module.exports={ searchMovieOscars };
