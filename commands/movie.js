@@ -1,5 +1,6 @@
 const { getMovies } = require('../services/sheetServices');
 const users = require('../config/users');
+const { searchMovie } = require('../utils/movieSearcher');
 const { formatMovie } = require('../utils/movieFormatter');
 
 module.exports={
@@ -32,30 +33,7 @@ module.exports={
         }
 
         const rows_oscars = movies_data.rows_oscars;
-        const awardHeaders = rows_oscars[2] || [];
-        const awardRows = rows_oscars.slice(3);
-        let awards=[];
-
-        for(let colIndex=0; colIndex<awardHeaders.length;colIndex++){
-            const awardName=awardHeaders[colIndex];
-
-            const found=awardRows.some(row=>{
-                const cell=(row[colIndex]||'').toUpperCase();
-                return cell.includes(movieName);
-            });
-
-            if(found && awardName){
-                awards.push(awardName);
-            }
-        }
-        const movie = {
-            name: (movieRow[0] || '').toUpperCase(),
-            language: (movieRow[1] || '').toUpperCase(),
-            auditorium: (movieRow[3] || '').toUpperCase(),
-            rating: (movieRow[4] || '').toUpperCase(),
-            review: (movieRow[5] || '').toUpperCase(),
-            awards
-        };
+        const movie= await searchMovie(rows_oscars, movieRow, movieName);
 
         const embed = formatMovie(userSpecificData.label, movie, userSpecificData.color);
         reply({embeds: [embed]});
