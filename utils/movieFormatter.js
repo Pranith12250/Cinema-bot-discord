@@ -9,6 +9,7 @@ function formatMovie(label, movie, color){
     .setTitle(`${label}`)
     .setColor(color)
     .addFields(
+        { name: 'DATE', value: movie.date || ' ', inline: false},
         { name: 'NAME', value: movie.name || ' ', inline: false},
         { name: 'LANGUAGE', value: movie.language || ' ', inline: false},
         { name: 'AUDI', value: movie.auditorium || ' ', inline: false},

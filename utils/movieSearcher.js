@@ -17,11 +17,12 @@ async function searchMovieOscars(rows_oscars, movieRow, movieName) {
     }
 
     return {
-        name: (movieRow[0] || '').toUpperCase(),
-        language: (movieRow[1] || '').toUpperCase(),
-        auditorium: (movieRow[3] || '').toUpperCase(),
-        rating: (movieRow[4] || '').toUpperCase(),
-        review: (movieRow[5] || '').toUpperCase(),
+        date: (movieRow[0] || ''),
+        name: (movieRow[1] || '').toUpperCase(),
+        language: (movieRow[2] || '').toUpperCase(),
+        auditorium: (movieRow[4] || '').toUpperCase(),
+        rating: (movieRow[5] || '').toUpperCase(),
+        review: (movieRow[6] || '').toUpperCase(),
         awards
     };
 }
