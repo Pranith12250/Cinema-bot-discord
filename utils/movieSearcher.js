@@ -8,7 +8,7 @@ async function searchMovieOscars(rows_oscars, movieRow, movieName) {
 
         const found=awardRows.some(row=>{
             const cell=(row[colIndex]||'').toUpperCase();
-            return cell.includes(movieName);
+            return cell.includes(movieRow[1].toUpperCase());
         });
 
         if(found && awardName){
