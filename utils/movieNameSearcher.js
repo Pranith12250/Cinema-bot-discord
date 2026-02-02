@@ -1,0 +1,42 @@
+const Fuse = require('fuse.js');
+
+function normalize(str){
+    return str.replace(/[^\w\s]/g, '')
+              .trim()
+              .toUpperCase();
+}
+
+function confidenceCalculator(confidenceVal){
+    let value = (1 - confidenceVal)*100;
+    return value.toFixed(2)+'%';
+}
+
+function findMovieRow(rows_movies, movieName){
+    if(!rows_movies) return null;
+
+    const data = rows_movies.slice(1).map(row=>({
+        title: normalize(row[1] || ''),
+        row
+    }));
+
+    const fuse = new Fuse(data,{
+        keys: ['title'],
+        threshold: 0.3,
+        ignoreLocation: true,
+        distance: 100,
+        minMatchCharLength: 2,
+        includeScore: true
+    });
+
+    const results = fuse.search(normalize(movieName));
+
+    if(!results.length)
+        return null;
+
+    const { row } = results[0].item;
+    row.push(confidenceCalculator(results[0].score));
+
+    return row;
+}
+
+module.exports = {findMovieRow};

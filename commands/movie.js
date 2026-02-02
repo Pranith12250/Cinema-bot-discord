@@ -2,6 +2,7 @@ const { getMovies } = require('../services/sheetServices');
 const users = require('../config/users');
 const { searchMovieOscars        } = require('../utils/movieSearcher');
 const { formatMovie } = require('../utils/movieFormatter');
+const { findMovieRow } = require('../utils/movieNameSearcher');
 
 module.exports={
     name: 'movie',
@@ -23,20 +24,7 @@ module.exports={
 
         const rows_movies = movies_data.rows_movies;
 
-        const movieRow = rows_movies.slice(1).find(row => {
-            const normalisedName = normalize(movieName);
-            const cell = normalize(row[1] || '');
-            if( normalisedName.length > 10)
-            {
-                return(
-                    cell.includes(normalisedName)
-                    || normalisedName.includes(cell)
-                );
-            }
-            else{
-                return cell == normalisedName;
-            }
-        })
+        const movieRow = findMovieRow(rows_movies, movieName);
 
         if(!movieRow){
             return reply('MOVIE NOT TER FUCKING <:nahh:725441480209989712>');
@@ -49,10 +37,3 @@ module.exports={
         reply({embeds: [embed]});
     },
 };
-
-function normalize(str){
-    return str
-            .replace(/[^\w\s]/g, '')
-            .trim()
-            .toUpperCase();
-}
