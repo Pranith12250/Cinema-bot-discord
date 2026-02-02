@@ -21,10 +21,12 @@ function findMovieRow(rows_movies, movieName){
 
     const fuse = new Fuse(data,{
         keys: ['title'],
+        ignoreDiacritics: true,
         threshold: 0.3,
+        shouldSort: true,
         ignoreLocation: true,
         distance: 100,
-        minMatchCharLength: 2,
+        minMatchCharLength: 3,
         includeScore: true
     });
 
