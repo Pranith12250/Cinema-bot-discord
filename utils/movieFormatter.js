@@ -16,8 +16,10 @@ function formatMovie(label, movie, color){
         { name: 'RATING', value: movie.rating || ' ', inline: false},
         { name: 'REVIEW', value: movie.review || ' '},
         { name: 'AWARDS', value: awardsText || ' '},
-        { name: 'MY SEARCH CONFIDENCE', value: movie.confidence},
     )
+    .setFooter({
+        text: `MY SEARCH CONFIDENCE: ${movie.confidence}\nYOUR SEARCH TERM: ${movie.searchTerm}\n`
+    })
     .setTimestamp();
 }
 

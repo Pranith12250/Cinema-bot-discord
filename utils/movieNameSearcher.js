@@ -36,6 +36,7 @@ function findMovieRow(rows_movies, movieName){
         return null;
 
     const { row } = results[0].item;
+    row.push(movieName);
     row.push(confidenceCalculator(results[0].score));
 
     return row;

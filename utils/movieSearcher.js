@@ -24,7 +24,8 @@ async function searchMovieOscars(rows_oscars, movieRow, movieName) {
         rating: (movieRow[5] || '').toUpperCase(),
         review: (movieRow[6] || '').toUpperCase(),
         awards,
-        confidence: (movieRow[7] || '')
+        searchTerm: (movieRow[7] || ''),
+        confidence: (movieRow[8] || '')
     };
 }
 
