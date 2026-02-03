@@ -27,4 +27,14 @@ async function getMovies(sheet_id, range_movies, range_oscars) {
     };
 }
 
-module.exports={getMovies};
+async function getAllRows(sheet_id) {
+    const res_rows = await sheets.spreadsheets.values.get({
+        spreadsheetId: sheet_id,
+        range: 'A1:Z50'
+    });
+
+    const rows = res_rows.data.values || [];
+    return rows;
+}
+
+module.exports={getMovies, getAllRows};

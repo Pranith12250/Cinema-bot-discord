@@ -19,7 +19,11 @@ const commands = [
 
     new SlashCommandBuilder()
     .setName('time')
-    .setDescription('KNOW T FUCKING TIME').toJSON()
+    .setDescription('KNOW T FUCKING TIME').toJSON(),
+
+    new SlashCommandBuilder()
+    .setName('format')
+    .setDescription('KNOW T FUCKING SHIT FORMAT').toJSON()
 ];
 
 const rest = new REST({version: '10'}).setToken(process.env.DISCORD_TOKEN);

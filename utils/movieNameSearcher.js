@@ -1,10 +1,5 @@
 const Fuse = require('fuse.js');
-
-function normalize(str){
-    return str.replace(/[^\w\s]/g, '')
-              .trim()
-              .toUpperCase();
-}
+const { normalize } = require('./normalize');
 
 function confidenceCalculator(confidenceVal){
     let value = (1 - confidenceVal)*100;

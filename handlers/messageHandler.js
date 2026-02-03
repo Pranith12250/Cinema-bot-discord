@@ -47,6 +47,21 @@ module.exports=async function messageHandler(message) {
             break;
         }
 
+        case 'format':{
+
+            try{
+                await interaction.deferReply();
+                await command.execute({username: 'ultrameme6969', reply: (text)=>interaction.editReply(text)});
+            }
+            catch(err){
+                console.error(err);
+                interaction.editReply({
+                    content: 'YOU MED I FUCKING CRASH. SAY SPRRY NOW BILLLLLAAAADDDDYYYYY',
+                    ephemeral: false,
+                });
+            }
+            break;
+        }
 
         default:
             break;
