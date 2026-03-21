@@ -27,7 +27,7 @@ module.exports={
         const movieRow = findMovieRow(rows_movies, movieName);
 
         if(!movieRow){
-            return reply('MOVIE NOT TER FUCKING <:nahh:725441480209989712>');
+            return reply(`${movieName} NOT TER FOR ${username.toUpperCase()} FUCKING <:nahh:725441480209989712>`);
         }
 
         const rows_oscars = movies_data.rows_oscars;
